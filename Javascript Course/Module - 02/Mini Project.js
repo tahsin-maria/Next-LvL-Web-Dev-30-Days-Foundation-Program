@@ -1,7 +1,7 @@
 //  {#fd1,10}
 /*
 
-Student Management System
+Student Management System (CRUD)
 
 --> Add a student with a unique ID that automatically increments.
 --> Display all students in the array.
@@ -44,31 +44,78 @@ const addStudent = (name, age, department) => {
 addStudent("Tahsin", 22, "ECE");
 console.log(students); //display all students
 
-//  {#dfc,24}
+//  {#dfc,27}
 //find a student by id
 const findStudent = (id) => {
   if (typeof id !== "number") {
     console.log("Please enter a valid number");
-    return;
+    return null;
   }
 
   let foundStudent = null; // not initialized as empty obj because an empty obj is also truthy in js
+  let foundStudentIdx = -1;
 
-  for (let i of students) {
-    if (i.id === id) {
-      foundStudent = i;
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].id === id) {
+      foundStudent = students[i];
+      foundStudentIdx = i;
       break;
     }
   }
   if (foundStudent) {
     console.log(`Student with id ${id} has been Found`);
     console.log(foundStudent);
+    return foundStudentIdx;
   } else {
     console.log(`No student with id ${id} exists`);
+    return null;
   }
 };
-
 findStudent(102);
 
+//  {#122,21}
+//update a students info using id
+const updateStudent = (id, name, age, department) => {
+  if (typeof id !== "number") {
+    console.log("Please enter a valid number");
+    return;
+  }
+  let studentIdx = findStudent(id);
 
+  if (studentIdx === null) {
+    console.log("Student Not Found");
+    return;
+  }
+
+  students[studentIdx].name = name;
+  students[studentIdx].age = age;
+  students[studentIdx].department = department;
+
+  console.log("Student Info Updated Successfully");
+  console.log(students);
+};
+updateStudent(108, "Thor", 87, "ECE");
+
+//  {#125,22}
 //delete a student using their id
+const deleteStudent = (id) => {
+  if (typeof id !== "number") {
+    console.log("Please enter a valid number");
+    return;
+  }
+  let deleteStudentIdx = -1;
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].id === id) {
+      deleteStudentIdx = i;
+      break;
+    }
+  }
+  if (deleteStudentIdx !== -1) {
+    students.splice(deleteStudentIdx, 1);
+    console.log(`Student with id ${id} has been deleted`);
+  } else {
+    console.log(`Student with id ${id} not found`);
+  }
+};
+deleteStudent(109);
+console.log(students);
