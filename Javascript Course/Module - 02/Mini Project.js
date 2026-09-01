@@ -1,13 +1,18 @@
-//  {#fd1,10}
+//  {#fd1,15}
 /*
+Student Record Management Using CRUD Operations
 
-Student Management System (CRUD)
+---> Create — Add Student:
+Add a new student to the system and automatically assign a unique ID based on the existing student records.
 
---> Add a student with a unique ID that automatically increments.
---> Display all students in the array.
---> Find a student by their ID and display their information. If the student does not exist, print "404 not found".
---> Delete a student by ID. Remove the correct student from the array and display a confirmation message.
+---> Read — Find Student:
+Search for a student using their ID and display their complete information. If no student matches the given ID, display an appropriate “Student Not Found” message.
 
+---> Update — Update Student:
+Modify a student's name, age, and department using their unique ID. The system should notify the user if the specified student does not exist.
+
+---> Delete — Delete Student:
+Remove a student from the system using their ID and display a confirmation message after successful deletion.
 */
 
 let students = [
