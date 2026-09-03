@@ -10,3 +10,6 @@ import multiply from "./math.js";
 //import mul from "./math.js"; --> renaming multiply to mul
 
 console.log(multiply(10, 5)); //50
+
+
+//import multiply , {add,subtract} from "./math.js";  ---> same
